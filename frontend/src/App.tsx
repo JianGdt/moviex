@@ -1,8 +1,11 @@
+
+
 function App() {
 
   return (
-    <>
-  <h1 className='text-gray-500'>Hello fuckers</h1>
+    <>  
+      <h1 className="text-red-700">Hello</h1>
+
     </>
   )
 }
