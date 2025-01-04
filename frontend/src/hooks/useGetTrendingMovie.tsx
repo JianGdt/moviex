@@ -3,7 +3,7 @@ import { useContentStore } from "../store/movieDetails";
 import axios from "axios";
 
 const useGetTrendingMovie = () => {
-	const [trendingContent, setTrendingContent] = useState(null);
+	const [trendingContent, setTrendingContent] =  useState<ComponentProps.TrendingContent | null>(null);
 	const { contentType } = useContentStore();
 
 	useEffect(() => {

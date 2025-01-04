@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-const AuthScreen = () => {
+export default function AuthScreen() {
 	const [email, setEmail] = useState("");
 	const navigate = useNavigate();
 
-	const handleFormSubmit = (e) => {
+	const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		navigate("/signup?email=" + email);
 	};
@@ -15,13 +15,11 @@ const AuthScreen = () => {
 		<div className='relative hero-bg'>
 			{/* Navbar */}
 			<header className='flex items-center justify-between max-w-6xl p-4 pb-10 mx-auto'>
-				<img src='/netflix-logo.png' alt='Netflix Logo' className='w-32 md:w-52' />
+				<img src="../../public/netflix-logo.svg" alt='Netflix Logo' className='w-32 md:w-52' />
 				<Link to={"/login"} className='px-2 py-1 text-white bg-red-600 rounded'>
 					Sign In
 				</Link>
 			</header>
-
-			{/* hero section */}
 			<div className='flex flex-col items-center justify-center max-w-6xl py-40 mx-auto text-center text-white'>
 				<h1 className='mb-4 text-4xl font-bold md:text-6xl'>Unlimited movies, TV shows, and more</h1>
 				<p className='mb-4 text-lg'>Watch anywhere. Cancel anytime.</p>
@@ -167,4 +165,3 @@ const AuthScreen = () => {
 		</div>
 	);
 };
-export default AuthScreen;

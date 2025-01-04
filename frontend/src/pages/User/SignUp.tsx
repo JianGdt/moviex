@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/authUsers";
 
 const SignUpPage = () => {
-	const { searchParams } = new URL(document.location);
+	const { searchParams } = new URL(document.location.href); 
 	const emailValue = searchParams.get("email");
 
 	const [email, setEmail] = useState(emailValue || "");
@@ -12,7 +12,7 @@ const SignUpPage = () => {
 
 	const { signup, isSigningUp } = useAuthStore();
 
-	const handleSignUp = (e) => {
+	const handleSignUp = (e: React.FormEvent) => {
 		e.preventDefault();
 		signup({ email, username, password });
 	};

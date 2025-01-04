@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/authUsers";
 
-const LoginPage = () => {
+export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const { login, isLoggingIn } = useAuthStore();
 
-	const handleLogin = (e) => {
+	const handleLogin = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		login({ email, password });
 	};
@@ -72,4 +72,3 @@ const LoginPage = () => {
 		</div>
 	);
 };
-export default LoginPage;

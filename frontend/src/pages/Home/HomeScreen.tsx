@@ -7,7 +7,7 @@ import { useContentStore } from "../../store/movieDetails";
 import MovieSlider from "../../components/MovieSlider";
 import { useState } from "react";
 
-const HomeScreen = () => {
+export default function HomeScreen() {
 	const { trendingContent } = useGetTrendingContent();
 	const { contentType } = useContentStore();
 	const [imgLoading, setImgLoading] = useState(true);
@@ -24,12 +24,9 @@ const HomeScreen = () => {
 		<>
 			<div className='relative h-screen text-white '>
 				<Navbar />
-
-				{/* COOL OPTIMIZATION HACK FOR IMAGES */}
 				{imgLoading && (
 					<div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/70 shimmer -z-10' />
 				)}
-
 				<img
 					src={ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path}
 					alt='Hero img'
@@ -52,7 +49,7 @@ const HomeScreen = () => {
 						</h1>
 						<p className='mt-2 text-lg'>
 							{trendingContent?.release_date?.split("-")[0] ||
-								trendingContent?.first_air_date.split("-")[0]}{" "}
+								trendingContent?.first_air_date?.split("-")[0]}{" "}
 							| {trendingContent?.adult ? "18+" : "PG-13"}
 						</p>
 
@@ -91,4 +88,3 @@ const HomeScreen = () => {
 		</>
 	);
 };
-export default HomeScreen;

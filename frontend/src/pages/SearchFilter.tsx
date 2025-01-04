@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useContentStore } from "../store/movieDetails";
 import Navbar from "../components/Navbar";
 import { Search } from "lucide-react";
@@ -7,32 +7,34 @@ import axios from "axios";
 import { ORIGINAL_IMG_BASE_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 
-const SearchFilter = () => {
-	const [activeTab, setActiveTab] = useState("movie");
-	const [searchTerm, setSearchTerm] = useState("");
+export default function SearchFilter(){
+    const [activeTab, setActiveTab] = useState<"movie" | "tv" | "person">("movie");
+    const [searchTerm, setSearchTerm] = useState<string>("");
+    const [results, setResults] = useState<ComponentProps.Result[]>([]);
+    const { setContentType } = useContentStore();
 
-	const [results, setResults] = useState([]);
-	const { setContentType } = useContentStore();
+    const handleTabClick = (tab: "movie" | "tv" | "person"): void => {
+        setActiveTab(tab);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        tab === "movie" ? setContentType("movie") : setContentType("tv");
+        setResults([]);
+      };
+    
 
-	const handleTabClick = (tab) => {
-		setActiveTab(tab);
-		tab === "movie" ? setContentType("movie") : setContentType("tv");
-		setResults([]);
-	};
-
-	const handleSearch = async (e) => {
-		e.preventDefault();
-		try {
-			const res = await axios.get(`/api/v1/search/${activeTab}/${searchTerm}`);
-			setResults(res.data.content);
-		} catch (error) {
-			if (error.response.status === 404) {
-				toast.error("Nothing found, make sure you are searching under the right category");
-			} else {
-				toast.error("An error occurred, please try again later");
-			}
-		}
-	};
+      const handleSearch = async (e: FormEvent): Promise<void> => {
+        e.preventDefault();
+        try {
+          const res = await axios.get(`/api/v1/search/${activeTab}/${searchTerm}`);
+          setResults(res.data.content);
+        } catch (error: unknown) {
+          if (axios.isAxiosError(error) && error.response?.status === 404) {
+            toast.error("Pag wala, wala, wag ipilit");
+          } else {
+            toast.error("wait lang ssob");
+          }
+        }
+      };
+    
 
 	return (
 		<div className='min-h-screen text-white bg-black'>
@@ -116,4 +118,3 @@ const SearchFilter = () => {
 		</div>
 	);
 };
-export default SearchFilter;
