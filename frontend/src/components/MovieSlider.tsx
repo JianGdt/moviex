@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useContentStore } from "../store/movieDetails";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { SMALL_IMG_BASE_URL } from "../utils/constant";
+import { SMALL_IMG_BASE_URL } from "../constant/constant";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 

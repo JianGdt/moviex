@@ -5,12 +5,13 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ReactPlayer from "react-player";
-import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from "../utils/constant";
-import { formatReleaseDate } from "../utils/dateFormatted";
+import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from "../constant/constant";
+import { formatReleaseDate } from "../helpers/dateFormatted";
+import Skeleton from "../components/skeleton/Skeleton";
 
 
 export default function WatchPage() {
-  const { id } = useParams<{ id: string }>(); // Ensure the type for id is correctly inferred
+  const { id } = useParams<{ id: string }>();
   const [trailers, setTrailers] = useState<{ key: string }[]>([]);
   const [currentTrailerIdx, setCurrentTrailerIdx] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
@@ -86,7 +87,9 @@ export default function WatchPage() {
     }
   };
 
-  if (loading) return <div className="min-h-screen p-10 bg-black">{/* <WatchPageSkeleton /> */}</div>;
+  if (loading) return <div className="min-h-screen p-10 bg-black">
+    <Skeleton/>
+  </div>;
 
   if (!content) {
     return (

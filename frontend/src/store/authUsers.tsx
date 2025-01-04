@@ -1,5 +1,5 @@
 import axios from "axios";
-import toast from "react-hot-toast";
+import { toast } from 'react-toastify';
 import { create } from "zustand";
 
 export const useAuthStore = create<ComponentProps.AuthStoreState>((set) => ({
@@ -31,7 +31,7 @@ export const useAuthStore = create<ComponentProps.AuthStoreState>((set) => ({
         try {
           const response = await axios.post("/api/v1/auth/login", credentials);
           set({ user: response.data.user, isLoggingIn: false });
-          console.log('response', response.data.user);
+          toast.success("Logged in successfully");
         } catch (error: unknown) {
           if (axios.isAxiosError(error)) {
             toast.error(error.response?.data?.message || "Login failed");

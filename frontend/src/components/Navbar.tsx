@@ -16,7 +16,7 @@ export default function Navbar() {
 		<header className='flex flex-wrap items-center justify-between h-20 max-w-6xl p-4 mx-auto'>
 			<div className='z-50 flex items-center gap-10'>
 				<Link to='/'>
-					<img src='../../public/netflix-logo.svg' alt='Netflix Logo' className='w-32 sm:w-40' />
+					<img src='/netflix-logo.svg' alt='Netflix Logo' className='w-32 sm:w-40' />
 				</Link>
 				<div className='items-center hidden gap-2 sm:flex'>
 					<Link to='/' className='hover:underline' onClick={() => setContentType("movie")}>

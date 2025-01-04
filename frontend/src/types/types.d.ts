@@ -101,6 +101,4 @@ declare namespace ComponentProps {
         name?: string;
         poster_path?: string | null;
       };
-      
-      
 }

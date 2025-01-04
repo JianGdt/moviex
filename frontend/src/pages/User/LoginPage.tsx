@@ -17,7 +17,7 @@ export default function LoginPage() {
 		<div className='w-full h-screen hero-bg'>
 			<header className='flex items-center justify-between max-w-6xl p-4 mx-auto'>
 				<Link to={"/"}>
-					<img src='/netflix-logo.png' alt='logo' className='w-52' />
+					<img src='/netflix-logo.svg' alt='logo' className='w-52' />
 				</Link>
 			</header>
 

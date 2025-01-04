@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { SMALL_IMG_BASE_URL } from "../utils/constant";
+import { SMALL_IMG_BASE_URL } from "../constant/constant";
 import { Trash } from "lucide-react";
-import toast from "react-hot-toast";
-import { formatDate } from "../utils/dateFormatted";
+import { toast } from 'react-toastify';
+import { formatDate } from "../helpers/dateFormatted";
 
 export default function SearchHistoryPage() {
   const [searchHistory, setSearchHistory] = useState<ComponentProps.SearchHistoryEntry[]>([]);

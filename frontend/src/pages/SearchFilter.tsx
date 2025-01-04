@@ -2,10 +2,10 @@ import { FormEvent, useState } from "react";
 import { useContentStore } from "../store/movieDetails";
 import Navbar from "../components/Navbar";
 import { Search } from "lucide-react";
-import toast from "react-hot-toast";
 import axios from "axios";
-import { ORIGINAL_IMG_BASE_URL } from "../utils/constant";
+import { ORIGINAL_IMG_BASE_URL } from "../constant/constant";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 export default function SearchFilter(){
     const [activeTab, setActiveTab] = useState<"movie" | "tv" | "person">("movie");
