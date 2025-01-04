@@ -7,7 +7,7 @@ import tvRoutes from "./routes/tv.route.js";
 import searchRoutes from "./routes/search.route.js";
 import { ENV_VARS } from "./config/envConfig.js";
 import { connectDB } from "./config/database.js";
-import { protectRoute } from "./middleware/protectedRoutes.js";
+import { protectedRoutes } from "./middleware/protectedRoutes.js";
 
 const app = express();
 
@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/movie", protectRoute, movieRoutes);
-app.use("/api/v1/tv", protectRoute, tvRoutes);
-app.use("/api/v1/search", protectRoute, searchRoutes);
+app.use("/api/v1/movie", protectedRoutes, movieRoutes);
+app.use("/api/v1/tv", protectedRoutes, tvRoutes);
+app.use("/api/v1/search", protectedRoutes, searchRoutes);
 
 if (ENV_VARS.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
