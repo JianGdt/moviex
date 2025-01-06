@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-	origin: ["https://moviex.vercel.app"],
+	origin: ["https://moviex-ui.vercel.app/"],
     credentials: true,
     methods: ["GET", "POST"]
 }));
