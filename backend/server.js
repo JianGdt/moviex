@@ -8,14 +8,25 @@ import searchRoutes from "./routes/search.route.js";
 import { ENV_VARS } from "./config/envConfig.js";
 import { connectDB } from "./config/database.js";
 import { protectedRoutes } from "./middleware/protectedRoutes.js";
+import cors from "cors";
 
 const app = express();
 
 const PORT = ENV_VARS.PORT;
 const __dirname = path.resolve();
 
+app.use(cors());
+
 app.use(express.json());
 app.use(cookieParser());
+
+const corsOptions = {
+	origin: ["https://moviex.vercel.app"],
+	method: ['GET', 'POST'],
+	credentials: true,
+  };
+ 
+  app.use(cors(corsOptions));
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectedRoutes, movieRoutes);
