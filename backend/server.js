@@ -20,13 +20,11 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-const corsOptions = {
+app.use(cors({
 	origin: ["https://moviex.vercel.app"],
-	method: ['GET', 'POST'],
-	credentials: true,
-  };
- 
-  app.use(cors(corsOptions));
+    credentials: true,
+    methods: ["GET", "POST"]
+}));
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectedRoutes, movieRoutes);
