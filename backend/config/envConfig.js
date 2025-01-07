@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("MONGO_URI:", process.env.MONGO_URI); // Debugging line
+console.log("MONGO_URI:", process.env.MONGO_URI); 
 
 export const ENV_VARS = {
 	MONGO_URI: process.env.MONGO_URI,
