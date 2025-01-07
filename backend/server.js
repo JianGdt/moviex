@@ -31,7 +31,7 @@ app.use("/api/v1/movie", protectedRoutes, movieRoutes);
 app.use("/api/v1/tv", protectedRoutes, tvRoutes);
 app.use("/api/v1/search", protectedRoutes, searchRoutes);
 
+connectDB();
 app.listen(PORT, () => {
 	console.log("Server started at http://localhost:" + PORT);
-	connectDB();
 });
