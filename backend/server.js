@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-	origin: ["http://localhost:5173", "https://moviex.vercel.app/"],
+	origin: ["http://localhost:5173", "https://moviex-apis.onrender.com/"],
     credentials: true,
 	methods: ["POST", "PUT", "DELETE", "OPTIONS", "GET"]
 }));
