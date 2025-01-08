@@ -5,11 +5,9 @@ import { useAuthStore } from "../../store/authUsers";
 const SignUpPage = () => {
 	const { searchParams } = new URL(document.location.href); 
 	const emailValue = searchParams.get("email");
-
 	const [email, setEmail] = useState(emailValue || "");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-
 	const { signup, isSigningUp } = useAuthStore();
 
 	const handleSignUp = (e: React.FormEvent) => {

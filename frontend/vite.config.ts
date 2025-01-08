@@ -7,7 +7,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			"/api": {
-				target: "https://moviex-api-chi.vercel.app/",
+				target: "http://localhost:8080",
 			},
 		},
 	},
