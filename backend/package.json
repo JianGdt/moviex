@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "frontend-build": "cd ../frontend && npm install && npx vite build",
-    "backend-build": "npm install",
-    "build": "npm run frontend-build && npm run backend-build",
-    "dev":   "nodemon index.js"
+    "dev":   "nodemon index.js",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
