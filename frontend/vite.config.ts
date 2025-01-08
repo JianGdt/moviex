@@ -7,7 +7,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			"/api": {
-				target: "https://moviex-api.onrender.com/api",
+				target: "http://localhost:8080",
 			},
 		},
 	},
