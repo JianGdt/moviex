@@ -7,9 +7,7 @@ import { useContentStore } from "../store/movieDetails";
 export default function Navbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const { user, logout } = useAuthStore();
-
 	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
 	const { setContentType } = useContentStore();
 
 	return (
