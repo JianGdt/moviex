@@ -10,9 +10,6 @@ import { connectDB } from "./config/database.js";
 import { protectedRoutes } from "./middleware/protectedRoutes.js";
 import { ENV_VARS } from "./config/envConfig.js";
 
-// Load environment variables
-dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -20,8 +17,8 @@ const __dirname = path.resolve();
 
 // Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 if (ENV_VARS.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
@@ -29,6 +26,8 @@ if (ENV_VARS.NODE_ENV === "production") {
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 	});
 }
+
+
 // Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectedRoutes, movieRoutes);
