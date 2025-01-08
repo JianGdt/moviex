@@ -1,8 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 import dotenv from "dotenv";
-
 import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import movieRoutes from "./routes/movies.route.js";
@@ -24,14 +22,6 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-app.use(cors(
-  {
-      origin: ["https://moviex-ui.vercel.app/", "http://localhost:5173"],
-      methods: ["POST", "GET"],
-      credentials: true
-  }
-));
 
 if (ENV_VARS.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
