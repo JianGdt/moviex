@@ -35,6 +35,7 @@ app.use("/api/v1/search", protectedRoutes, searchRoutes);
 
 // Catch-all route for non-API requests
 app.get("*", (req, res) => {
+  res.send('Eh?')
   res.redirect(process.env.CLIENT_URL);
 });
 
