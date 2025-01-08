@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd backend && npm install",
-    "start-server": "cd backend && node app.js",
-    "install-client": "cd frontend && npm install",
-    "build-client": "cd frontend && npm run build",
-    "start-client": "cd frontend && npm run start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./backend/index.js",
+    "start": "node ./backend/index.js",
+    "build": "npm install",
+    "frontend": "cd frontend && npm install && npm run build",
+    "backend": "cd backend && npm install && npm run dev"
+
   },
   "keywords": [],
   "author": "",

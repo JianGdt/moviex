@@ -20,31 +20,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: ["http://localhost:5173", "https://moviex-ui.vercel.app/"], // frontend URI (ReactJS)
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}
-app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors(
+  {
+      origin: ["https://moviex-ui.vercel.app/", "http://localhost:5173"],
+      methods: ["POST", "GET"],
+      credentials: true
+  }
+));
 
+app.get("/", (req, res) => {
+res.json("Hello");
+}) 
 // Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectedRoutes, movieRoutes);
 app.use("/api/v1/tv", protectedRoutes, tvRoutes);
 app.use("/api/v1/search", protectedRoutes, searchRoutes);
-
-app.get("/", (req, res) => {
-  res.status(201).json({message: "Connected to Backend!"});
-});
-
-// Error handling for JSON parsing
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
-    return res.status(400).send({ message: "Invalid JSON" });
-  }
-  next();
-});
 
 // Database connection
 connectDB();
