@@ -17,11 +17,18 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(cors({
-	origin: ENV_VARS.CLIENT_URL,
-  credentials: true,
-	method: ["POST", "PUT", "DELETE", "GET"]
-}));
+app.use(
+  cors({
+      origin: ['*', process.env["CLIENT_URL"]],
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true
+  })
+);
+
+app.get("*", (req, res) => {
+  res.writeHead(302, {'Location': `${process.env["CLIENT_URL"]}/home`});
+  res.end();
+});
 
 
 
@@ -35,10 +42,6 @@ if(ENV_VARS.NODE_ENV !== "production") {
     path: "./.env"
   })
 }
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
 
 console.log(ENV_VARS.MONGO_URI);
 
