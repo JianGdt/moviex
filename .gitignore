@@ -12,8 +12,6 @@ dist
 dist-ssr
 *.local
 
-vercel.json
-
 .env
 
 # Editor directories and files
@@ -26,8 +24,3 @@ vercel.json
 *.njsproj
 *.sln
 *.sw?
-
-/frontend/build
-/frontend/build
-/backend/node_modules
-/backend/.env

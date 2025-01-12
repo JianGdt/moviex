@@ -32,7 +32,7 @@ if (ENV_VARS.NODE_ENV === "production") {
 	});
 }
 
+connectDB();
 app.listen(PORT, () => {
 	console.log("Server started at http://localhost:" + PORT);
-	connectDB();
 });
