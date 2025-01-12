@@ -39,7 +39,7 @@ export default function SearchFilter(){
 	return (
 		<div className='min-h-screen text-white bg-black'>
 			<Navbar />
-			<div className='container px-4 py-8 mx-auto'>
+			<div className='container px-4 mx-auto my-24'>
 				<div className='flex justify-center gap-3 mb-4'>
 					<button
 						className={`py-2 px-4 rounded ${

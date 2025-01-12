@@ -44,7 +44,7 @@ export default function HomeScreen() {
 					/>
 
 					<div className='max-w-2xl'>
-						<h1 className='mt-4 text-6xl font-extrabold text-balance'>
+						<h1 className='mt-4 text-4xl font-extrabold sm:text-6xl text-balance'>
 							{trendingContent?.title || trendingContent?.name}
 						</h1>
 						<p className='mt-2 text-lg'>

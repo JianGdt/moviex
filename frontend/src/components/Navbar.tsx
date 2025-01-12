@@ -29,7 +29,7 @@ export default function Navbar() {
 				</div>
 			</div>
 
-			<div className='z-50 flex items-center gap-2'>
+			<div className='z-50 flex items-center gap-4'>
 				<Link to={"/search"}>
 					<Search className='cursor-pointer size-6' />
 				</Link>

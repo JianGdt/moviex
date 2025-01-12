@@ -110,7 +110,7 @@ export default function WatchPage() {
         <Navbar />
 
         {trailers.length > 0 && (
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between my-12">
             <button
               className={`bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded ${
                 currentTrailerIdx === 0 ? "opacity-50 cursor-not-allowed " : ""
